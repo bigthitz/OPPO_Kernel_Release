@@ -44,7 +44,11 @@ jobs:
           clang-11 lld-11 llvm-11 \
           gcc g++ make bc bison flex libssl-dev \
           zip unzip curl python3 device-tree-compiler
-
+    - name: Setup LLVM symlinks
+      run: |
+        sudo ln -sf /usr/bin/ld.lld-11 /usr/bin/ld.lld
+        sudo ln -sf /usr/bin/lld-11 /usr/bin/lld
+        
     - name: Set swap to 15G
       uses: pierotofy/set-swap-space@master
       with:
