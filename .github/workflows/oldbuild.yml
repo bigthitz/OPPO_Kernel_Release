@@ -47,6 +47,7 @@ jobs:
           sudo ln -s /usr/bin/llvm-nm-14 /usr/bin/llvm-nm
           sudo ln -s /usr/bin/llvm-ar-14 /usr/bin/llvm-ar
           sudo ln -s /usr/bin/llvm-objdump-14 /usr/bin/llvm-objdump
+          sudo ln -s /usr/bin/llvm-objcopy-14 /usr/bin/llvm-objcopy
       - name: Set swap to 15G
         uses: pierotofy/set-swap-space@master
         with:
