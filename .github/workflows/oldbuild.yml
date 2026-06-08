@@ -48,6 +48,13 @@ jobs:
           sudo ln -s /usr/bin/llvm-ar-14 /usr/bin/llvm-ar
           sudo ln -s /usr/bin/llvm-objdump-14 /usr/bin/llvm-objdump
           sudo ln -s /usr/bin/llvm-objcopy-14 /usr/bin/llvm-objcopy
+          sudo ln -s /usr/bin/llvm-strip-14 /usr/bin/llvm-strip
+          sudo ln -s /usr/bin/llvm-readelf-14 /usr/bin/llvm-readelf   # 读取 ELF 信息
+          sudo ln -s /usr/bin/llvm-size-14 /usr/bin/llvm-size         # 查看段大小
+          sudo ln -s /usr/bin/llvm-strings-14 /usr/bin/llvm-strings   # 提取字符串
+          sudo ln -s /usr/bin/llvm-addr2line-14 /usr/bin/llvm-addr2line # 地址转行号
+          sudo ln -s /usr/bin/llvm-cxxfilt-14 /usr/bin/llvm-cxxfilt   # C++ 符号还原
+          sudo ln -s /usr/bin/llvm-dwarfdump-14 /usr/bin/llvm-dwarfdump # DWARF 调试 
       - name: Set swap to 15G
         uses: pierotofy/set-swap-space@master
         with:
