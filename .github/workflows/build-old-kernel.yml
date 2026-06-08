@@ -106,7 +106,7 @@ jobs:
         make $COMMON_ARGS ${{ github.event.inputs.defconfig }}
         
         echo "==> Compiling Kernel..."
-        make $COMMON_ARGS -j$(nproc --all) KCFLAGS="-Wno-error=section-mismatch"
+        make $COMMON_ARGS -j$(nproc --all) KCFLAGS="-Wno-unknown-warning-option -Wno-error=section-mismatch"
         
     - name: Package AnyKernel3
       run: |
