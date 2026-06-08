@@ -82,7 +82,7 @@ jobs:
     - name: Download LLVM 11 (Manual)
       run: |
         echo "==> Downloading LLVM 11 prebuilt..."
-        wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android-12.0.0_r1/clang-r383902.tar.gz -O llvm.tar.gz
+        wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/tags/android-12.0.0_r1/clang-r383902.tar.gz -O llvm.tar.gz
         mkdir -p llvm
         tar -xf llvm.tar.gz -C llvm
         cd llvm/bin
