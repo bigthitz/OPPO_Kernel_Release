@@ -39,14 +39,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Dependencies
         run: |
-          sudo apt update && sudo apt-get install git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 zstd libc6 binutils libc6-dev-i386 gcc g++ p7zip p7zip-full lld-11 llvm-11 -y
+          sudo apt update && sudo apt-get install git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 zstd libc6 binutils libc6-dev-i386 gcc g++ p7zip p7zip-full lld-14 llvm-14 -y
       - name: Setup LLVM symlinks
         run: |
-          sudo ln -sf /usr/bin/ld.lld-11 /usr/bin/ld.lld
-          sudo ln -sf /usr/bin/lld-11 /usr/bin/lld
-          sudo ln -s /usr/bin/llvm-nm-11 /usr/bin/llvm-nm
-          sudo ln -s /usr/bin/llvm-ar-11 /usr/bin/llvm-ar
-          sudo ln -s /usr/bin/llvm-objdump-11 /usr/bin/llvm-objdump
+          sudo ln -sf /usr/bin/ld.lld-14 /usr/bin/ld.lld
+          sudo ln -sf /usr/bin/lld-14 /usr/bin/lld
+          sudo ln -s /usr/bin/llvm-nm-14 /usr/bin/llvm-nm
+          sudo ln -s /usr/bin/llvm-ar-14 /usr/bin/llvm-ar
+          sudo ln -s /usr/bin/llvm-objdump-14 /usr/bin/llvm-objdump
       - name: Set swap to 15G
         uses: pierotofy/set-swap-space@master
         with:
