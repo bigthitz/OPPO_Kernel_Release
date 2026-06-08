@@ -41,7 +41,7 @@ jobs:
         sudo apt update
         sudo apt install -y \
           git ccache automake flex lzop bison gperf build-essential \
-          clang-11 lld llvm \
+          clang-11 lld-11 llvm-11 \
           gcc g++ make bc bison flex libssl-dev \
           zip unzip curl python3 device-tree-compiler
 
@@ -93,21 +93,17 @@ jobs:
     - name: Build Kernel (LLVM Clang Manual)
       working-directory: /kernel/${{ github.event.inputs.kernel_version_folder }}
       run: |
-        export PATH=$GITHUB_WORKSPACE/llvm/bin:$GITHUB_WORKSPACE/gcc64/bin:$GITHUB_WORKSPACE/gcc32/bin:$PATH
-        export LLVM=1
-        export CC=clang
-        export LD=ld.lld
-        export LLVM_IAS=1
-        export ARCH=arm64
-        export CROSS_COMPILE=aarch64-linux-android-
-        export CROSS_COMPILE_ARM32=arm-linux-androideabi-
-        export CLANG_TRIPLE=aarch64-linux-gnu-
-    
+        sudo chown -R $USER:$USER /kernel/${{ github.event.inputs.kernel_version_folder }}
+        make mrproper
+        
+        COMMON_ARGS="ARCH=arm64 O=out CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=$GITHUB_WORKSPACE/gcc64/bin/aarch64-linux-android- CROSS_COMPILE_ARM32=$GITHUB_WORKSPACE/gcc32/bin/arm-linux-androideabi-"
+        
         echo "==> Generating .config..."
-        make O=out ${{ github.event.inputs.defconfig }}
-    
+        make $COMMON_ARGS ${{ github.event.inputs.defconfig }}
+        
         echo "==> Compiling Kernel..."
-        make -j$(nproc) O=out KCFLAGS="-Wno-error=section-mismatch"
+        make $COMMON_ARGS -j$(nproc --all) KCFLAGS="-Wno-error=section-mismatch"
+        
     - name: Package AnyKernel3
       run: |
         git clone --depth=1 https://github.com/osm0sis/AnyKernel3 AK3
