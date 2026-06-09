@@ -136,7 +136,7 @@ jobs:
           git clone --depth=1 https://github.com/osm0sis/AnyKernel3 AK3
           echo "==> Copying kernel image..."
           cp /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image.gz AK3/ 2>/dev/null || \
-          cp /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image.gz AK3/
+          cp /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image AK3/
           echo "==> Setting up anykernel.sh..."
           sed -i 's/do.devicecheck=1/do.devicecheck=0/' AK3/anykernel.sh
           sed -i 's/do.modules=0/do.modules=1/' AK3/anykernel.sh
