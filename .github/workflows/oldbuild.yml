@@ -153,4 +153,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: old-kernel-image
-          path: /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image.gz
+          path: /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image
