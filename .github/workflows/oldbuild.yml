@@ -154,3 +154,8 @@ jobs:
         with:
           name: old-kernel-image
           path: /kernel/${{ github.event.inputs.kernel_version_folder }}/out/arch/arm64/boot/Image
+      - name: Upload vmlinux
+        uses: actions/upload-artifact@v4
+        with:
+          name: old-kernel-vmlinux
+          path: /kernel/${{ github.event.inputs.kernel_version_folder }}/out/vmlinux
